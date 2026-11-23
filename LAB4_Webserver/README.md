@@ -18,9 +18,11 @@ git checkout -b <ten-nhanh>
 | Thành viên | Bài tập | Nhánh đề xuất | File / Hàm phụ trách chính |
 | :--- | :--- | :--- | :--- |
 | Thành viên 1 | Bài 0 (nền tảng) + Bài 1 (Trung bình trượt & Mutex) | `lab4/ex1-moving-avg` | `include/sensor_avg.h`, `src/sensor_avg.cpp`, `handleSensors()` |
-| Thành viên 2 | Bài 2 (Ngưỡng nhiệt độ JS) + Bài 3 (Mức độ ẩm & Hysteresis) | `lab4/ex2-3-levels` | `mainPage()` (HTML/JS), `humLevel()`, JSON `/sensors` |
-| Thành viên 3 | Bài 4 (Giữ AP hoạt động `WIFI_AP_STA`) | `lab4/ex4-ap-sta` | `settingsPage()`, `handleConnect()`, `connectToWiFi()`, `main_server_task()` |
-| Thành viên 4 | Bài 5 (Gửi telemetry & cảnh báo CoreIOT) | `lab4/ex5-coreiot` | `include/coreiot_task.h`, `src/coreiot_task.cpp`, `internet_task()` |
+| Thành viên 2 | Bài 2 (Ngưỡng nhiệt độ JS) | `lab4/ex2-temp-ui` | `mainPage()` (khối `T_LIMIT` và hiển thị `#temp`) |
+| Thành viên 3 | Bài 3 (Mức độ ẩm & Hysteresis 1%) | `lab4/ex3-hum-level` | `humLevel()`, trường `"hum_level"` trong `/sensors`, `#hum` trong `mainPage()` |
+| Thành viên 4 *(Xung phong)* | Bài 4 (Giữ AP `WIFI_AP_STA`) + Bài 5 (CoreIOT) | `lab4/ex4-ap-sta`, `lab4/ex5-coreiot` | `settingsPage()`, `handleConnect()`, `connectToWiFi()`, `main_server_task()`, `internet_task()` |
+
+> **Lưu ý khi merge Bài 2 & Bài 3:** Cả hai bài đều cập nhật hàm `setInterval` trong `mainPage()` (`src/mainserver.cpp`), vì vậy Thành viên 2 chỉ sửa khối xử lý `#temp`, còn Thành viên 3 chỉ sửa khối xử lý `#hum` để dễ gộp vào `main`.
 
 ## 3. Hợp đồng hàm dùng chung (để Bài 5 ghép với Bài 1 & Bài 3)
 - **Bài 1 (`sensor_avg.h`):** `bool getAverage(float *t_avg, float *h_avg);` (trả về `false` nếu `buf_count == 0`).
