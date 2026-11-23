@@ -1,0 +1,33 @@
+# PlatformIO build & cache
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# IDE / Editor
+.vscode/
+*.code-workspace
+.idea/
+
+# Build outputs & binaries
+*.bin
+*.elf
+*.map
+*.o
+*.d
+
+# Python / TinyML
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets (do not commit Wi-Fi credentials or CoreIOT tokens)
+**/include/secrets.h
+secrets.h
+.env
+
+# OS & Temp
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
