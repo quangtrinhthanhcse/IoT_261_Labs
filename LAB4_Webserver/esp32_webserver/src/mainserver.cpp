@@ -1,6 +1,7 @@
 #include "mainserver.h"
 #include <WiFi.h>
 #include <WebServer.h>
+#include "sensor_avg.h"
 
 bool led1_state = false;
 bool led2_state = false;
@@ -14,8 +15,12 @@ bool connecting = false;
 
 String mainPage()
 {
-  float temperature = glob_temperature;
-  float humidity = glob_humidity;
+  float temperature = 0;
+  float humidity = 0;
+  if (!getAverage(&temperature, &humidity)) {
+    temperature = glob_temperature ;
+    humidity = glob_humidity ;
+  }
   String led1 = led1_state ? "ON" : "OFF";
   String led2 = led2_state ? "ON" : "OFF";
 
@@ -112,11 +117,11 @@ String mainPage()
     <div class="container">
       <h1>📊 ESP32 Dashboard</h1>
       <div class="sensor">
-        🌡️ Nhiệt độ: <span id="temp">)rawliteral" +
+        🌡️ Nhiệt độ (TB của 10): <span id="temp">)rawliteral" +
          String(temperature) + R"rawliteral(</span> &deg;C
       </div>
       <div class="sensor">
-        💧 Độ ẩm: <span id="hum">)rawliteral" +
+        💧 Độ ẩm (TB của 10): <span id="hum">)rawliteral" +
          String(humidity) + R"rawliteral(</span> %
       </div>
 
@@ -301,10 +306,12 @@ void handleToggle()
                   "\",\"led2\":\"" + String(led2_state ? "ON" : "OFF") + "\"}");
 }
 
-void handleSensors()
-{
-  float t = glob_temperature;
-  float h = glob_humidity;
+void handleSensors(){
+  float t = 0, h = 0;
+  if (!getAverage(&t, &h)) {
+    t = glob_temperature;
+    h = glob_humidity;
+  }
   String json = "{\"temp\":" + String(t) + ",\"hum\":" + String(h) + "}";
   server.send(200, "application/json", json);
 }
