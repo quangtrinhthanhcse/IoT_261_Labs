@@ -20,7 +20,7 @@ git checkout -b <ten-nhanh>
 | Thành viên 1 | Bài 0 (nền tảng) + Bài 1 (Trung bình trượt & Mutex) | `lab4/ex1-moving-avg` | `include/sensor_avg.h`, `src/sensor_avg.cpp`, `handleSensors()` |
 | Thành viên 2 | Bài 2 (Ngưỡng nhiệt độ JS) | `lab4/ex2-temp-ui` | `mainPage()` (khối `T_LIMIT` và hiển thị `#temp`) |
 | Thành viên 3 | Bài 3 (Mức độ ẩm & Hysteresis 1%) | `lab4/ex3-hum-level` | `humLevel()`, trường `"hum_level"` trong `/sensors`, `#hum` trong `mainPage()` |
-| Thành viên 4 *(Xung phong)* | Bài 4 (Giữ AP `WIFI_AP_STA`) + Bài 5 (CoreIOT) | `lab4/ex4-ap-sta`, `lab4/ex5-coreiot` | `settingsPage()`, `handleConnect()`, `connectToWiFi()`, `main_server_task()`, `internet_task()` |
+| Thành viên 4 | Bài 4 (Giữ AP `WIFI_AP_STA`) + Bài 5 (CoreIOT) | `lab4/ex4-ap-sta`, `lab4/ex5-coreiot` | `settingsPage()`, `handleConnect()`, `connectToWiFi()`, `main_server_task()`, `internet_task()` |
 
 > **Lưu ý khi merge Bài 2 & Bài 3:** Cả hai bài đều cập nhật hàm `setInterval` trong `mainPage()` (`src/mainserver.cpp`), vì vậy Thành viên 2 chỉ sửa khối xử lý `#temp`, còn Thành viên 3 chỉ sửa khối xử lý `#hum` để dễ gộp vào `main`.
 
